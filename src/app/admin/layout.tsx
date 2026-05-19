@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, Package, Users, Settings, LogOut, MessageSquare, FileText, BookOpen } from "lucide-react";
+import { LayoutDashboard, Package, Users, Settings, LogOut, MessageSquare, FileText, Image as ImageIcon } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -20,7 +20,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { name: "Products", href: "/admin/products", icon: Package },
     { name: "Blog Posts", href: "/admin/blog", icon: FileText },
-    { name: "About Us Story", href: "/admin/about", icon: BookOpen },
+    { name: "Inspiration Gallery", href: "/admin/inspiration", icon: ImageIcon },
     { name: "Inquiries & Leads", href: "/admin/inquiries", icon: Users },
     { name: "Messages", href: "/admin/messages", icon: MessageSquare },
     { name: "Reviews", href: "/admin/reviews", icon: MessageSquare },
