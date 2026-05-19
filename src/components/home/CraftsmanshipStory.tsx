@@ -11,7 +11,7 @@ export default function CraftsmanshipStory() {
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
           {/* Text Content */}
-          <div className="lg:w-1/2">
+          <div className="w-full lg:w-1/2">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -41,13 +41,13 @@ export default function CraftsmanshipStory() {
           </div>
 
           {/* Image Content */}
-          <div className="lg:w-1/2 relative">
+          <div className="w-full lg:w-1/2 relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1 }}
-              className="relative h-[600px] w-full"
+              className="relative h-[350px] sm:h-[450px] md:h-[600px] w-full"
             >
               <Image
                 src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2064&auto=format&fit=crop"
