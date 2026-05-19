@@ -125,35 +125,35 @@ export default function AdminProducts() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Name</label>
-                  <input required className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value, slug: e.target.value.toLowerCase().replace(/\s+/g, '-')})} />
+                  <input required className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value, slug: e.target.value.toLowerCase().replace(/\s+/g, '-')})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Slug</label>
-                  <input required className="w-full border p-2 text-sm bg-gray-50 outline-none" value={formData.slug} readOnly />
+                  <input required className="w-full border p-2 text-sm bg-gray-50 outline-none text-gray-900" value={formData.slug} readOnly />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Category</label>
-                  <input required className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} />
+                  <input required className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Price</label>
-                  <input required className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} />
+                  <input required className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} />
                 </div>
               </div>
               <div>
                 <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Description</label>
-                <textarea required className="w-full border p-2 text-sm focus:border-brand-gold outline-none" rows={3} value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} />
+                <textarea required className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" rows={3} value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Materials</label>
-                  <input required className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.material} onChange={e => setFormData({...formData, material: e.target.value})} />
+                  <input required className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.material} onChange={e => setFormData({...formData, material: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Dimensions</label>
-                  <input required className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.dimensions} onChange={e => setFormData({...formData, dimensions: e.target.value})} />
+                  <input required className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.dimensions} onChange={e => setFormData({...formData, dimensions: e.target.value})} />
                 </div>
               </div>
               <div>

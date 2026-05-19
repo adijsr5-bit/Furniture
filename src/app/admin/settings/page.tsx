@@ -119,31 +119,31 @@ export default function AdminSettings() {
       {/* Dynamic Body */}
       <div>
         {activeTab === "general" ? (
-          <form className="space-y-8 bg-white p-6 md:p-8 rounded-sm shadow-sm border">
+          <form className="space-y-8 bg-white p-6 md:p-8 rounded-sm shadow-sm border text-gray-900">
             {/* Brand Details */}
             <section>
               <h3 className="font-serif text-lg mb-4 text-brand-dark border-b pb-2">Brand Identity</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Brand Name</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.brandName} onChange={e => setFormData({...formData, brandName: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.brandName} onChange={e => setFormData({...formData, brandName: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Logo URL (Optional)</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" placeholder="https://" value={formData.logoUrl} onChange={e => setFormData({...formData, logoUrl: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" placeholder="https://" value={formData.logoUrl} onChange={e => setFormData({...formData, logoUrl: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Primary Color (Hex)</label>
                   <div className="flex items-center gap-2">
-                    <input type="color" className="w-10 h-10 border-none" value={formData.primaryColor || "#000000"} onChange={e => setFormData({...formData, primaryColor: e.target.value})} />
-                    <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.primaryColor} onChange={e => setFormData({...formData, primaryColor: e.target.value})} />
+                    <input type="color" className="w-10 h-10 border-none bg-transparent" value={formData.primaryColor || "#000000"} onChange={e => setFormData({...formData, primaryColor: e.target.value})} />
+                    <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.primaryColor} onChange={e => setFormData({...formData, primaryColor: e.target.value})} />
                   </div>
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Background Color (Hex)</label>
                   <div className="flex items-center gap-2">
-                    <input type="color" className="w-10 h-10 border-none" value={formData.backgroundColor || "#ffffff"} onChange={e => setFormData({...formData, backgroundColor: e.target.value})} />
-                    <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.backgroundColor} onChange={e => setFormData({...formData, backgroundColor: e.target.value})} />
+                    <input type="color" className="w-10 h-10 border-none bg-transparent" value={formData.backgroundColor || "#ffffff"} onChange={e => setFormData({...formData, backgroundColor: e.target.value})} />
+                    <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.backgroundColor} onChange={e => setFormData({...formData, backgroundColor: e.target.value})} />
                   </div>
                 </div>
               </div>
@@ -155,15 +155,15 @@ export default function AdminSettings() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Contact Email</label>
-                  <input type="email" className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.contactEmail} onChange={e => setFormData({...formData, contactEmail: e.target.value})} />
+                  <input type="email" className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.contactEmail} onChange={e => setFormData({...formData, contactEmail: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">WhatsApp Number</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.whatsappNumber} onChange={e => setFormData({...formData, whatsappNumber: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.whatsappNumber} onChange={e => setFormData({...formData, whatsappNumber: e.target.value})} />
                 </div>
                 <div className="md:col-span-2">
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Store Address</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.storeAddress} onChange={e => setFormData({...formData, storeAddress: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.storeAddress} onChange={e => setFormData({...formData, storeAddress: e.target.value})} />
                 </div>
               </div>
             </section>
@@ -174,11 +174,11 @@ export default function AdminSettings() {
               <div className="space-y-6">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">SEO Title</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.seoTitle} onChange={e => setFormData({...formData, seoTitle: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.seoTitle} onChange={e => setFormData({...formData, seoTitle: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">SEO Description</label>
-                  <textarea rows={2} className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.seoDescription} onChange={e => setFormData({...formData, seoDescription: e.target.value})} />
+                  <textarea rows={2} className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white font-light" value={formData.seoDescription} onChange={e => setFormData({...formData, seoDescription: e.target.value})} />
                 </div>
               </div>
             </section>
@@ -189,11 +189,11 @@ export default function AdminSettings() {
               <div className="space-y-6">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Shipping Policy</label>
-                  <textarea rows={4} className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.shippingPolicy} onChange={e => setFormData({...formData, shippingPolicy: e.target.value})} />
+                  <textarea rows={4} className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white font-light" value={formData.shippingPolicy} onChange={e => setFormData({...formData, shippingPolicy: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Return Policy</label>
-                  <textarea rows={4} className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.returnPolicy} onChange={e => setFormData({...formData, returnPolicy: e.target.value})} />
+                  <textarea rows={4} className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white font-light" value={formData.returnPolicy} onChange={e => setFormData({...formData, returnPolicy: e.target.value})} />
                 </div>
               </div>
             </section>
@@ -204,15 +204,15 @@ export default function AdminSettings() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Instagram URL</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.instagramUrl} onChange={e => setFormData({...formData, instagramUrl: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.instagramUrl} onChange={e => setFormData({...formData, instagramUrl: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Facebook URL</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.facebookUrl} onChange={e => setFormData({...formData, facebookUrl: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.facebookUrl} onChange={e => setFormData({...formData, facebookUrl: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Twitter/X URL</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" value={formData.twitterUrl} onChange={e => setFormData({...formData, twitterUrl: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" value={formData.twitterUrl} onChange={e => setFormData({...formData, twitterUrl: e.target.value})} />
                 </div>
               </div>
             </section>
@@ -223,15 +223,15 @@ export default function AdminSettings() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Living Room Image URL</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" placeholder="https://" value={formData.livingRoomImage} onChange={e => setFormData({...formData, livingRoomImage: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" placeholder="https://" value={formData.livingRoomImage} onChange={e => setFormData({...formData, livingRoomImage: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Bedroom Image URL</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" placeholder="https://" value={formData.bedroomImage} onChange={e => setFormData({...formData, bedroomImage: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" placeholder="https://" value={formData.bedroomImage} onChange={e => setFormData({...formData, bedroomImage: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Dining Image URL</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" placeholder="https://" value={formData.diningRoomImage} onChange={e => setFormData({...formData, diningRoomImage: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" placeholder="https://" value={formData.diningRoomImage} onChange={e => setFormData({...formData, diningRoomImage: e.target.value})} />
                 </div>
               </div>
             </section>
@@ -242,11 +242,11 @@ export default function AdminSettings() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Footer Tagline</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" placeholder="Crafted for Premium Lifestyles." value={formData.footerTagline} onChange={e => setFormData({...formData, footerTagline: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" placeholder="Crafted for Premium Lifestyles." value={formData.footerTagline} onChange={e => setFormData({...formData, footerTagline: e.target.value})} />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-1">Footer Copyright Text</label>
-                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none" placeholder="Luxe Furnishings. All rights reserved." value={formData.footerCopyright} onChange={e => setFormData({...formData, footerCopyright: e.target.value})} />
+                  <input className="w-full border p-2 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white" placeholder="Luxe Furnishings. All rights reserved." value={formData.footerCopyright} onChange={e => setFormData({...formData, footerCopyright: e.target.value})} />
                 </div>
               </div>
             </section>

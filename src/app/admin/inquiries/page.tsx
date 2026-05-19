@@ -28,29 +28,41 @@ export default function AdminInquiries() {
     }
   };
 
-  const downloadEmails = () => {
-    const emails = inquiries
-      .map(inq => inq.email || "")
-      .filter(email => email.trim() !== "" && email.includes("@"));
+  const downloadEmails = async () => {
+    try {
+      const res = await fetch("/api/inquiries");
+      const data = await res.json();
+      if (!data.success) {
+        alert("Failed to fetch leads.");
+        return;
+      }
       
-    const uniqueEmails = Array.from(new Set(emails));
-    
-    if (uniqueEmails.length === 0) {
-      alert("No lead email addresses found to download.");
-      return;
+      const emails = (data.data || [])
+        .map((inq: any) => inq.email || "")
+        .filter((email: string) => email.trim() !== "" && email.includes("@"));
+        
+      const uniqueEmails = Array.from(new Set(emails));
+      
+      if (uniqueEmails.length === 0) {
+        alert("No lead email addresses found in database yet. Try submitting a new inquiry or contact message with an email!");
+        return;
+      }
+      
+      const fileContent = uniqueEmails.join("\n");
+      const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `leads-emails-${new Date().toISOString().split('T')[0]}.txt`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error(err);
+      alert("Error generating download.");
     }
-    
-    const fileContent = uniqueEmails.join("\n");
-    const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `leads-emails-${new Date().toISOString().split('T')[0]}.txt`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
   };
 
   const updateStatus = async (id: string, newStatus: string) => {
@@ -94,7 +106,7 @@ export default function AdminInquiries() {
             <input 
               type="text" 
               placeholder="Search leads..." 
-              className="pl-10 pr-4 py-2 border border-gray-200 rounded-md text-sm outline-none focus:border-brand-gold w-full"
+              className="pl-10 pr-4 py-2 border border-gray-200 rounded-md text-sm outline-none focus:border-brand-gold w-full text-gray-900 bg-white"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -102,12 +114,12 @@ export default function AdminInquiries() {
           <div className="relative">
             <Filter className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <select 
-              className="pl-10 pr-8 py-2 border border-gray-200 rounded-md text-sm outline-none focus:border-brand-gold bg-white appearance-none w-full"
+              className="pl-10 pr-8 py-2 border border-gray-200 rounded-md text-sm outline-none focus:border-brand-gold bg-white appearance-none w-full text-gray-900"
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
             >
-              <option value="All">All Statuses</option>
-              {STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
+              <option value="All" className="text-gray-900 bg-white">All Statuses</option>
+              {STATUSES.map(s => <option key={s} value={s} className="text-gray-900 bg-white">{s}</option>)}
             </select>
           </div>
         </div>

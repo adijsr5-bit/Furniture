@@ -141,7 +141,7 @@ export default function AdminBlogManager() {
         <input
           type="text"
           placeholder="Search articles by title or category..."
-          className="w-full pl-10 pr-4 py-3 border text-sm outline-none focus:border-brand-gold font-light"
+          className="w-full pl-10 pr-4 py-3 border text-sm outline-none focus:border-brand-gold font-light text-gray-900 bg-white"
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
         />
@@ -161,7 +161,7 @@ export default function AdminBlogManager() {
       ) : (
         <div className="bg-white border rounded-sm overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse text-sm">
+            <table className="w-full text-left border-collapse text-sm text-gray-900 bg-white">
               <thead>
                 <tr className="bg-gray-50 border-b text-gray-500 uppercase tracking-wider text-[11px] font-semibold">
                   <th className="p-4 md:p-6">Cover</th>
@@ -241,7 +241,7 @@ export default function AdminBlogManager() {
                     type="text"
                     required
                     placeholder="e.g. The Philosophy of Bouclé Styling"
-                    className="w-full border p-3 text-sm focus:border-brand-gold outline-none"
+                    className="w-full border p-3 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white"
                     value={formData.title}
                     onChange={e => setFormData({ ...formData, title: e.target.value })}
                   />
@@ -249,16 +249,16 @@ export default function AdminBlogManager() {
                 <div>
                   <label className="block text-xs uppercase tracking-wider text-gray-500 mb-2">Category</label>
                   <select
-                    className="w-full border p-3 text-sm focus:border-brand-gold outline-none bg-white"
+                    className="w-full border p-3 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white"
                     value={formData.category}
                     onChange={e => setFormData({ ...formData, category: e.target.value })}
                   >
-                    <option value="Interior Design">Interior Design</option>
-                    <option value="Craftsmanship">Craftsmanship</option>
-                    <option value="Color Theory">Color Theory</option>
-                    <option value="Materials">Materials</option>
-                    <option value="Ergonomics">Ergonomics</option>
-                    <option value="Trends">Trends</option>
+                    <option value="Interior Design" className="text-gray-900 bg-white">Interior Design</option>
+                    <option value="Craftsmanship" className="text-gray-900 bg-white">Craftsmanship</option>
+                    <option value="Color Theory" className="text-gray-900 bg-white">Color Theory</option>
+                    <option value="Materials" className="text-gray-900 bg-white">Materials</option>
+                    <option value="Ergonomics" className="text-gray-900 bg-white">Ergonomics</option>
+                    <option value="Trends" className="text-gray-900 bg-white">Trends</option>
                   </select>
                 </div>
               </div>
@@ -269,7 +269,7 @@ export default function AdminBlogManager() {
                   type="text"
                   required
                   placeholder="https://images.unsplash.com/... or https://res.cloudinary.com/..."
-                  className="w-full border p-3 text-sm focus:border-brand-gold outline-none"
+                  className="w-full border p-3 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white"
                   value={formData.image}
                   onChange={e => setFormData({ ...formData, image: e.target.value })}
                 />
@@ -281,7 +281,7 @@ export default function AdminBlogManager() {
                   type="text"
                   required
                   placeholder="Provide a compelling 1-2 sentence preview for cards..."
-                  className="w-full border p-3 text-sm focus:border-brand-gold outline-none"
+                  className="w-full border p-3 text-sm focus:border-brand-gold outline-none text-gray-900 bg-white"
                   value={formData.excerpt}
                   onChange={e => setFormData({ ...formData, excerpt: e.target.value })}
                 />
@@ -295,7 +295,7 @@ export default function AdminBlogManager() {
                   rows={10}
                   required
                   placeholder="Write your article copy here..."
-                  className="w-full border p-3 text-sm focus:border-brand-gold outline-none resize-none font-light leading-relaxed"
+                  className="w-full border p-3 text-sm focus:border-brand-gold outline-none resize-none font-light leading-relaxed text-gray-900 bg-white"
                   value={formData.content}
                   onChange={e => setFormData({ ...formData, content: e.target.value })}
                 />

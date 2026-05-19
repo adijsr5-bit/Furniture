@@ -195,7 +195,7 @@ export default function AdminAboutManager() {
                     type="text"
                     required
                     placeholder="e.g. Our Heritage, The Philosophy"
-                    className="w-full border p-2.5 text-xs focus:border-brand-gold outline-none"
+                    className="w-full border p-2.5 text-xs focus:border-brand-gold outline-none text-gray-900 bg-white"
                     value={formData.label}
                     onChange={e => setFormData({ ...formData, label: e.target.value })}
                   />
@@ -206,7 +206,7 @@ export default function AdminAboutManager() {
                     type="number"
                     required
                     min={1}
-                    className="w-full border p-2.5 text-xs focus:border-brand-gold outline-none"
+                    className="w-full border p-2.5 text-xs focus:border-brand-gold outline-none text-gray-900 bg-white"
                     value={formData.order}
                     onChange={e => setFormData({ ...formData, order: Number(e.target.value) })}
                   />
@@ -219,7 +219,7 @@ export default function AdminAboutManager() {
                   type="text"
                   required
                   placeholder="e.g. A Legacy of Design, An Eye For Detail"
-                  className="w-full border p-2.5 text-xs focus:border-brand-gold outline-none"
+                  className="w-full border p-2.5 text-xs focus:border-brand-gold outline-none text-gray-900 bg-white"
                   value={formData.title}
                   onChange={e => setFormData({ ...formData, title: e.target.value })}
                 />
@@ -231,7 +231,7 @@ export default function AdminAboutManager() {
                   rows={5}
                   required
                   placeholder="Write your story context here..."
-                  className="w-full border p-2.5 text-xs focus:border-brand-gold outline-none resize-none font-light leading-relaxed"
+                  className="w-full border p-2.5 text-xs focus:border-brand-gold outline-none resize-none font-light leading-relaxed text-gray-900 bg-white"
                   value={formData.content}
                   onChange={e => setFormData({ ...formData, content: e.target.value })}
                 />
