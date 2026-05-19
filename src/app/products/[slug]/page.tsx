@@ -4,30 +4,48 @@ import { ArrowLeft, ArrowRight, ShieldCheck, Truck, Clock } from "lucide-react";
 import ProductImageSlider from "@/components/products/ProductImageSlider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import connectDB from "@/lib/db";
+import Product from "@/models/Product";
 
 export const dynamic = "force-dynamic";
 
-export default async function ProductDetail({ params }: { params: Promise<{ slug: string }> }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/products`, { cache: 'no-store' });
-  const data = await res.json();
-  const products = data.data || [];
+async function getProductData(slug: string) {
+  await connectDB();
+  
+  // Fetch specific product by slug
+  const product = await Product.findOne({ slug });
+  if (!product) return { product: null, relatedProducts: [] };
 
+  // Fetch up to 4 related products in the same category or overall
+  const relatedProducts = await Product.find({ slug: { $ne: slug } }).limit(4);
+  
+  return {
+    product: JSON.parse(JSON.stringify(product)),
+    relatedProducts: JSON.parse(JSON.stringify(relatedProducts))
+  };
+}
+
+export default async function ProductDetail({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const product = products.find((p: any) => p.slug === resolvedParams.slug);
+  const { product, relatedProducts } = await getProductData(resolvedParams.slug);
   
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-brand-cream">
-        <h1 className="text-2xl font-serif">Product Not Found</h1>
-      </div>
+      <>
+        <Navbar />
+        <div className="min-h-screen flex flex-col items-center justify-center bg-brand-cream py-24 px-6 text-center">
+          <h1 className="text-3xl font-serif text-brand-dark mb-4">Product Not Found</h1>
+          <p className="text-gray-500 font-light max-w-md mb-8">
+            The collection space you are looking for might have been cataloged under a different reference.
+          </p>
+          <Link href="/products" className="bg-brand-dark text-white px-8 py-3 uppercase tracking-widest text-xs font-semibold hover:bg-brand-gold transition-colors">
+            Return to Collection
+          </Link>
+        </div>
+        <Footer />
+      </>
     );
   }
-
-  // Related products (same category, or just random)
-  const relatedProducts = products
-    .filter((p: any) => p.slug !== product.slug)
-    .slice(0, 4);
 
   return (
     <>
@@ -45,7 +63,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
             {/* Product Info */}
             <div className="flex flex-col">
               <span className="text-sm uppercase tracking-widest text-brand-dark/50 mb-4 block">
-                <Link href={`/categories/${product.category.toLowerCase().replace(/\s+/g, '-')}`} className="hover:text-brand-gold">{product.category}</Link>
+                <Link href="/products" className="hover:text-brand-gold">{product.category}</Link>
               </span>
               <h1 className="font-serif text-4xl md:text-5xl text-brand-dark mb-6">{product.name}</h1>
               <p className="text-2xl font-light text-brand-dark mb-8">{product.price}</p>

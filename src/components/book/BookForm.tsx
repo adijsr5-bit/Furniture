@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 export default function BookForm() {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     phone: "",
     city: "",
     preferredDate: "",
@@ -38,7 +39,7 @@ export default function BookForm() {
       
       if (res.ok) {
         setSuccess(true);
-        setFormData({ name: "", phone: "", city: "", preferredDate: "", customRequirement: "", productName: "" });
+        setFormData({ name: "", email: "", phone: "", city: "", preferredDate: "", customRequirement: "", productName: "" });
       }
     } catch (error) {
       console.error(error);
@@ -70,6 +71,19 @@ export default function BookForm() {
           />
         </div>
         <div>
+          <label className="block text-xs uppercase tracking-widest text-brand-dark mb-2">Email Address</label>
+          <input
+            type="email"
+            required
+            className="w-full border-b border-brand-walnut/30 bg-transparent py-3 focus:outline-none focus:border-brand-gold transition-colors font-light"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
           <label className="block text-xs uppercase tracking-widest text-brand-dark mb-2">Phone Number</label>
           <input
             type="tel"
@@ -79,9 +93,6 @@ export default function BookForm() {
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
           />
         </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-xs uppercase tracking-widest text-brand-dark mb-2">City</label>
           <input

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Search, Filter, Phone, Mail, Calendar, MapPin } from "lucide-react";
+import { Search, Filter, Phone, Mail, Calendar, MapPin, Download } from "lucide-react";
 
 export default function AdminInquiries() {
   const [inquiries, setInquiries] = useState<any[]>([]);
@@ -28,6 +28,31 @@ export default function AdminInquiries() {
     }
   };
 
+  const downloadEmails = () => {
+    const emails = inquiries
+      .map(inq => inq.email || "")
+      .filter(email => email.trim() !== "" && email.includes("@"));
+      
+    const uniqueEmails = Array.from(new Set(emails));
+    
+    if (uniqueEmails.length === 0) {
+      alert("No lead email addresses found to download.");
+      return;
+    }
+    
+    const fileContent = uniqueEmails.join("\n");
+    const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `leads-emails-${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   const updateStatus = async (id: string, newStatus: string) => {
     try {
       const res = await fetch(`/api/inquiries/${id}`, {
@@ -51,9 +76,19 @@ export default function AdminInquiries() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <h2 className="text-xl font-medium text-gray-900">Inquiries & Leads</h2>
+        <div>
+          <h2 className="text-xl font-medium text-gray-900">Inquiries & Leads</h2>
+          <p className="text-xs text-gray-500 font-light mt-1">Moderate customer appointments and showroom bookings.</p>
+        </div>
         
-        <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+        <div className="flex flex-wrap sm:flex-nowrap gap-4 w-full md:w-auto items-center">
+          <button
+            onClick={downloadEmails}
+            className="bg-brand-dark text-white px-4 py-2 text-xs uppercase tracking-widest font-semibold hover:bg-brand-gold transition-colors flex items-center gap-2"
+          >
+            <Download className="w-3.5 h-3.5" /> Download Email List (.TXT)
+          </button>
+          
           <div className="relative">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <input 
@@ -113,10 +148,12 @@ export default function AdminInquiries() {
                   <a href={`tel:${inq.phone}`} className="hover:underline">{inq.phone}</a>
                   <a href={`https://wa.me/${inq.phone.replace(/\D/g,'')}`} target="_blank" rel="noreferrer" className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">WhatsApp</a>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <MapPin className="w-4 h-4 text-brand-gold" />
-                  <span>{inq.city}</span>
-                </div>
+                {inq.email && (
+                  <div className="flex items-center gap-3 text-sm text-gray-600">
+                    <Mail className="w-4 h-4 text-brand-gold" />
+                    <a href={`mailto:${inq.email}`} className="hover:underline">{inq.email}</a>
+                  </div>
+                )}
                 {inq.preferredDate && (
                   <div className="flex items-center gap-3 text-sm text-gray-600">
                     <Calendar className="w-4 h-4 text-brand-gold" />
