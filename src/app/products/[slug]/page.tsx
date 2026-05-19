@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import connectDB from "@/lib/db";
 import Product from "@/models/Product";
+import { getSiteSettings } from "@/lib/getSettings";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +29,7 @@ async function getProductData(slug: string) {
 export default async function ProductDetail({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const { product, relatedProducts } = await getProductData(resolvedParams.slug);
+  const settings = await getSiteSettings();
   
   if (!product) {
     return (
@@ -46,6 +48,11 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
       </>
     );
   }
+
+  // Format dynamic WhatsApp URL
+  const rawNumber = settings.whatsappNumber || "1800123LUXE";
+  const cleanNumber = rawNumber.replace(/\D/g, "");
+  const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(`Hello, I am interested in learning more about "${product.name}". Could you share some details?`)}`;
 
   return (
     <>
@@ -98,7 +105,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
                 <Link href={`/book?product=${encodeURIComponent(product.name)}`} className="block w-full text-center bg-brand-dark text-white py-5 uppercase tracking-widest text-sm hover:bg-brand-gold transition-colors">
                   Inquire & Book Showroom Visit
                 </Link>
-                <a href={`https://wa.me/1800123LUXE?text=I am interested in ${product.name}`} target="_blank" rel="noreferrer" className="block w-full text-center border border-brand-dark text-brand-dark py-5 uppercase tracking-widest text-sm hover:bg-brand-dark hover:text-white transition-colors">
+                <a href={whatsappUrl} target="_blank" rel="noreferrer" className="block w-full text-center border border-brand-dark text-brand-dark py-5 uppercase tracking-widest text-sm hover:bg-brand-dark hover:text-white transition-colors">
                   Consult via WhatsApp
                 </a>
               </div>
