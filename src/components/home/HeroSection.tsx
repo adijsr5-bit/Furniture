@@ -21,7 +21,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center text-white mt-20">
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center text-white mt-12 md:mt-16">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,10 +76,10 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+        className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2 z-10"
       >
         <span className="text-white/70 text-xs uppercase tracking-[0.2em] font-light">Scroll</span>
-        <div className="w-px h-16 bg-white/30 relative overflow-hidden">
+        <div className="w-px h-12 bg-white/30 relative overflow-hidden">
           <motion.div
             animate={{ y: ["-100%", "100%"] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
