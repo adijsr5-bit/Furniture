@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import Product from "@/models/Product";
 import connectDB from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 async function getProducts() {
   await connectDB();
   const products = await Product.find({}).sort({ createdAt: -1 });

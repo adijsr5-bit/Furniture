@@ -5,6 +5,8 @@ import ProductImageSlider from "@/components/products/ProductImageSlider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProductDetail({ params }: { params: Promise<{ slug: string }> }) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const res = await fetch(`${baseUrl}/api/products`, { cache: 'no-store' });
