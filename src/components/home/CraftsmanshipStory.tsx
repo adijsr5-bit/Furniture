@@ -62,10 +62,10 @@ export default function CraftsmanshipStory() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="absolute -bottom-10 -left-10 bg-brand-cream text-brand-dark p-8 shadow-2xl max-w-xs hidden md:block"
+                className="absolute bottom-4 left-4 right-4 md:-bottom-10 md:-left-10 bg-brand-cream text-brand-dark p-6 md:p-8 shadow-2xl max-w-[calc(100%-2rem)] md:max-w-xs"
               >
-                <p className="font-serif text-2xl mb-2">"True luxury is in the unseen details."</p>
-                <p className="text-xs uppercase tracking-widest font-medium text-brand-gold">Head Designer</p>
+                <p className="font-serif text-xl md:text-2xl mb-2">"True luxury is in the unseen details."</p>
+                <p className="text-[10px] md:text-xs uppercase tracking-widest font-medium text-brand-gold">Head Designer</p>
               </motion.div>
             </motion.div>
           </div>
